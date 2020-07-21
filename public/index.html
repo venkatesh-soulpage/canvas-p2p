@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Video Chat</title>
+    <style>
+      div#logs p {
+        margin: 0;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 9px;
+      }
+
+      div#logs p.error {
+        color: red;
+      }
+
+      .video-stream {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+        -moz-transform: rotateY(180deg); /* Firefox */
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0"></script>
+  </head>
+  <body>
+    <h1>Video Chat</h1>
+    <video
+      class="video-stream"
+      id="localVideo"
+      height="300"
+      width="400"
+      autoplay
+    ></video>
+    <canvas id="localCanvas" hidden></canvas>
+    <video class="video-stream" id="remoteVideo" height="300" autoplay></video>
+
+    <div>
+      <button id="get-video">Get Video</button>
+      <button id="call" disabled="disabled">Call</button>
+      <button id="change-bg" hidden>Change Background</button>
+    </div>
+    <p>Log messages:</p>
+    <div id="logs"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
